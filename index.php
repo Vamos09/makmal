@@ -69,6 +69,23 @@ session_start();
       border-radius: 10px;
       overflow: hidden;
     }
+
+      @media (max-width: 576px) {
+    .header-title {
+      font-size: 1.5rem;
+    }
+
+    .d-flex.flex-wrap.gap-2 > a,
+    .d-flex.flex-wrap.gap-2 > button {
+      flex: 1 1 100%;
+    }
+
+    td .btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  }
   </style>
 </head>
 <body>
@@ -118,9 +135,11 @@ session_start();
               <td><?= htmlspecialchars($data['modul']) ?></td>
               <td><?= htmlspecialchars($data['pengajarmodul']) ?></td>
               <td>
-                <a href="view.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-info text-white mb-1"><i class="bi bi-eye"></i></a>
-                <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-warning text-dark mb-1"><i class="bi bi-pencil-square"></i></a>
-                <a href="delete.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Buang rekod ini?')"><i class="bi bi-trash"></i></a>
+                <div class="d-flex flex-wrap justify-content-center gap-1">
+                  <a href="view.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-info text-white"><i class="bi bi-eye"></i></a>
+                  <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-warning text-dark"><i class="bi bi-pencil-square"></i></a>
+                  <a href="delete.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Buang rekod ini?')"><i class="bi bi-trash"></i></a>
+                </div>
               </td>
             </tr>
           <?php
