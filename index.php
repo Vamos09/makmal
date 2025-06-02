@@ -70,22 +70,29 @@ session_start();
       overflow: hidden;
     }
 
-      @media (max-width: 576px) {
-    .header-title {
-      font-size: 1.5rem;
+    #scrollTopBtn {
+      bottom: 30px;
+      right: 30px;
+      z-index: 9999;
+      display: none;
     }
 
-    .d-flex.flex-wrap.gap-2 > a,
-    .d-flex.flex-wrap.gap-2 > button {
-      flex: 1 1 100%;
-    }
+    @media (max-width: 576px) {
+      .header-title {
+        font-size: 1.5rem;
+      }
 
-    td .btn {
-      display: block;
-      width: 100%;
-      margin-bottom: 5px;
+      .d-flex.flex-wrap.gap-2 > a,
+      .d-flex.flex-wrap.gap-2 > button {
+        flex: 1 1 100%;
+      }
+
+      td .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+      }
     }
-  }
   </style>
 </head>
 <body>
@@ -155,6 +162,11 @@ session_start();
     </div>
   </div>
 
+  <!-- Scroll to Top Button -->
+  <button onclick="scrollToTop()" id="scrollTopBtn" title="Kembali ke atas" class="btn btn-primary rounded-circle position-fixed">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -169,6 +181,17 @@ session_start();
       body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
     });
+
+    // Scroll to top button logic
+    const scrollBtn = document.getElementById("scrollTopBtn");
+
+    window.onscroll = function () {
+      scrollBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
 </body>
 </html>
